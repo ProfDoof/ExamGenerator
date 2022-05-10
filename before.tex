@@ -1,0 +1,41 @@
+\usepackage[margin=1in]{geometry}
+\usepackage{ulem}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{algpseudocode}
+\usepackage{xcolor, soul}
+\sethlcolor{gray}
+\makeatletter
+\def\fps@figure{H} 
+\makeatother
+\newcommand{\wideunderline}[2][2em]{%
+    \uline{\makebox[\ifdim\width>#1\width\else#1\fi][l]{#2}}%
+}
+\usepackage{fancyhdr}
+\fancypagestyle{name}{%
+    \fancyhead[L]{CSC 116 Section 007 \\ Name: \wideunderline[5cm]{}\smallskip}
+    \fancyhead[R]{Exam 3 \\ 04/28/2022\smallskip}
+}
+
+\usepackage{xpatch,realboxes}
+\usepackage{xcolor}
+
+\definecolor{mygray}{RGB}{230, 230, 230}
+
+\lstset{
+    basicstyle=\ttfamily,
+    extendedchars=true
+    numbers=left,
+    numberstyle=\tiny\ttfamily,
+    backgroundcolor=\color{mygray},
+    showstringspaces=false,
+    tabsize=2,
+    columns=fixed,
+    breaklines=true, postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{mygray}\hookrightarrow\space}}
+}
+
+
+\makeatletter
+\xpretocmd\lstinline{\Colorbox{mygray}\bgroup\appto\lst@DeInit{\egroup}}{}{}
+\makeatother
+\AfterEndEnvironment{lstlisting}{\leavevmode}
